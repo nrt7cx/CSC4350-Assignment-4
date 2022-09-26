@@ -14,10 +14,10 @@ print ("The server is ready to receive.")
 
 while True:
     connectionSocket, addr = serverSocket.accept()
-    sentence = connectionSocket.recv(10000).decode()
+    sentence = connectionSocket.recv(1024).decode()
     print(sentence)
-    modifiedSentence = "HTTP/1.1 200 OK\n" + sentence
-    connectionSocket.send(modifiedSentence.encode())
-
-    connectionSocket.close
+    if sentence[0:3] == "GET":
+        modifiedSentence = "HTTP/1.1 200 OK\r\n\r\n" + sentence + "\r\n\r\n"
+        connectionSocket.send(modifiedSentence.encode())
+        connectionSocket.close()
     
