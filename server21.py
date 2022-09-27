@@ -1,4 +1,5 @@
 from socket import *
+from pathlib import Path
 import argparse
 
 parser = argparse.ArgumentParser()
@@ -17,7 +18,17 @@ while True:
     sentence = connectionSocket.recv(1024).decode()
     print(sentence)
     if sentence[0:3] == "GET":
-        modifiedSentence = "HTTP/1.1 200 OK\r\n\r\n" + sentence + "\r\n\r\n"
-        connectionSocket.send(modifiedSentence.encode())
-        connectionSocket.close()
-    
+        path_to_file = ''
+        path = Path(path_to_file)
+        if path_to_file == '':
+            modifiedSentence = "HTTP/1.1 200 OK\r\n\r\n" + 'sentence' + "\r\n\r\n"
+            connectionSocket.send(modifiedSentence.encode())
+            connectionSocket.close()   
+        elif path.is_file():
+            modifiedSentence = "HTTP/1.1 200 OK\r\n\r\n" + sentence + "\r\n\r\n"
+            connectionSocket.send(modifiedSentence.encode())
+            connectionSocket.close()     
+        else:
+            modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n" + sentence + "\r\n\r\n"
+            connectionSocket.send(modifiedSentence.encode())
+            connectionSocket.close()
