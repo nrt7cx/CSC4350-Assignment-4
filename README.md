@@ -1,1 +1,4 @@
 # CSC4350-Assignment-4
+1. This project aims to create a functional web server that is able to access files within the directory it exists in. It is currently able to output information from .html and .txt files that are present within it. It also sends the correct status codes when receving the protocols from the browser.
+2. Use the command line terminal in order to run this code. Use python3 server21.py -p xxxx to run the code itself. In order to talk to the server open a browser of your choosing and type in the address bar http://127.0.0.1:xxxx/'insert_text_here' to access a specific item within the server. If it doesn't exist a 404 will return, or if it does or its blank the file or index.html will be returned.
+3. The code seems to be fully functional but could most likely be refined as I had to use several if and elif statements to get the code to work.
