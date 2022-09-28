@@ -1,6 +1,6 @@
-from posixpath import split
 from socket import *
 import argparse
+from pathlib import Path
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p","--port", help="Sets the port for the server", type=int)
@@ -28,15 +28,23 @@ while True:
     
         elif splitSentence[1] == "/index.html":
                 f = open('index.html', 'r') 
+                
                 file_contents = f.read()
                 connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
                 connectionSocket.close()
         
         elif splitSentence[1] == "/epic.txt":
-                r = open('epic.txt', 'r')
-                file_contents1 = r.read()
-                connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents1.encode() + b"\r\n\r\n")
-                connectionSocket.close()
+                f = 'epic.txt'
+                path = Path(f)
+                if path.is_file():
+                        r = open('epic.txt', 'r')
+                        file_contents1 = r.read()
+                        connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents1.encode() + b"\r\n\r\n")
+                        connectionSocket.close()
+                else:
+                        modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n"
+                        connectionSocket.send(modifiedSentence.encode())
+                        connectionSocket.close()
         
         else:
                 modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n"
