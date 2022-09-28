@@ -1,3 +1,7 @@
+#Nathaniel Tirado
+#Server recieves messages from the browser and sends the corresponding message back.
+#Python; socket, argparse, pathlib(Path)
+#run with command line
 from socket import *
 import argparse
 from pathlib import Path
