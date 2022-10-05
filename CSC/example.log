@@ -1,0 +1,26 @@
+10/05/2022 08:53:05 AM User-Agent: 2022-10-05 08:53:05.450685 GET / HTTP/1.1 200 (X11;
+INFO:root:1 2022-10-05 08:54:35.563202 GET / HTTP/1.1 200 (X11;
+INFO:root:127.0.0.1 2022-10-05 08:55:17.932649 GET / HTTP/1.1 200 (X11;
+INFO:root:127.0.0.1 - - 10/05/2022:08:59:25 GET / HTTP/1.1 200 (X11;
+INFO:root:127.0.0.1 - - 10/05/2022:09:03:34 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:03:34 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:03:34 GET /favicon.ico HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:03:35 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:03:35 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:04:35 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:04:35 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:08:28 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:08:28 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:09:18 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:09:39 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:14:42 GET /es HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:20:12 GET /es HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:20:28 GET /es HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:20:32 GET /es HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:20:37 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:20:37 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:21:24 GET / HTTP/1.1 200 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:21:24 GET /resources/sap-ui-core.js HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:21:28 GET /sds HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:23:43 GET /sds HTTP/1.1 404 Mozilla/5.0
+INFO:root:127.0.0.1 - - 10/05/2022:09:23:43 GET /favicon.ico HTTP/1.1 404 Mozilla/5.0

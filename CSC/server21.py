@@ -5,6 +5,8 @@
 from socket import *
 import argparse
 from pathlib import Path
+import logging
+import time
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-p","--port", help="Sets the port for the server", type=int)
@@ -21,6 +23,7 @@ while True:
     sentence = connectionSocket.recv(1024).decode()
     splitSentence = sentence.split()
     print(splitSentence)
+    logging.basicConfig(filename='example.log', level=logging.DEBUG)
 
     if splitSentence[0] == "GET":
 
@@ -28,13 +31,14 @@ while True:
                 f = open('index.html', 'r') 
                 file_contents = f.read()
                 connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+                logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 200 ' + splitSentence[6])
                 connectionSocket.close()
     
         elif splitSentence[1] == "/index.html":
                 f = open('index.html', 'r') 
-                
                 file_contents = f.read()
                 connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+                logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 200 ' + splitSentence[6])
                 connectionSocket.close()
         
         elif splitSentence[1] == "/epic.txt":
@@ -44,18 +48,26 @@ while True:
                         r = open('epic.txt', 'r')
                         file_contents1 = r.read()
                         connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents1.encode() + b"\r\n\r\n")
+                        logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 200 ' + splitSentence[6])
                         connectionSocket.close()
                 else:
-                        modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n"
-                        connectionSocket.send(modifiedSentence.encode())
+                        f = open('404.html', 'r')
+                        file_contents= f.read()
+                        connectionSocket.send(b"HTTP/1.1 404 Not Found\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+                        logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 404 ' + splitSentence[6])
                         connectionSocket.close()
         
         else:
-                modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n"
-                connectionSocket.send(modifiedSentence.encode())
+                f = open('404.html', 'r')
+                file_contents= f.read()
+                connectionSocket.send(b"HTTP/1.1 404 Not Found\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+                logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 404 ' + splitSentence[6])
                 connectionSocket.close()
         
     else:
-        modifiedSentence = "HTTP/1.1 404 Not Found\r\n\r\n"
+        f = open('400.html', 'r')
+        file_contents= f.read()
+        modifiedSentence = "HTTP/1.1 400 Bad Request\r\n\r\n"
         connectionSocket.send(modifiedSentence.encode())
+        logging.warning(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 400 ' + splitSentence[6])
         connectionSocket.close()
