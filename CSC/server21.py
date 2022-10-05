@@ -67,7 +67,6 @@ while True:
     else:
         f = open('400.html', 'r')
         file_contents= f.read()
-        modifiedSentence = "HTTP/1.1 400 Bad Request\r\n\r\n"
-        connectionSocket.send(modifiedSentence.encode())
-        logging.warning(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 400 ' + splitSentence[6])
+        connectionSocket.send(b"HTTP/1.1 400 Bad Request\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+        logging.warning(str(addr[0]) + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' - '  + splitSentence[0] + ' - 400 -')
         connectionSocket.close()
