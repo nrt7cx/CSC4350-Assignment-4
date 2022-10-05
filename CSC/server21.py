@@ -11,28 +11,28 @@ import time
 def my_Index():
         f = open('index.html', 'r') 
         file_contents = f.read()
-        connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+        connectionSocket.send(b"HTTP/1.1 200 OK\r\n Server: Nate's server\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
         logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 200 ' + splitSentence[6])
         connectionSocket.close()
 
 def file_Found():
         r = open('epic.txt', 'r')
         file_contents1 = r.read()
-        connectionSocket.send(b"HTTP/1.1 200 OK\r\n\r\n" + file_contents1.encode() + b"\r\n\r\n")
+        connectionSocket.send(b"HTTP/1.1 200 OK\r\nServer: Nate's server\r\n\r\n" + file_contents1.encode() + b"\r\n\r\n")
         logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 200 ' + splitSentence[6])
         connectionSocket.close()
         
 def my_404():
         f = open('404.html', 'r')
         file_contents= f.read()
-        connectionSocket.send(b"HTTP/1.1 404 Not Found\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+        connectionSocket.send(b"HTTP/1.1 404 Not Found\r\nServer: Nate's server\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
         logging.info(splitSentence[4][0:9] + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' ' + splitSentence[0] + ' ' + splitSentence[1] + ' ' + splitSentence[2] + ' 404 ' + splitSentence[6])
         connectionSocket.close()
 
 def my_400():
         f = open('400.html', 'r')
         file_contents= f.read()
-        connectionSocket.send(b"HTTP/1.1 400 Bad Request\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
+        connectionSocket.send(b"HTTP/1.1 400 Bad Request\r\nServer: Nate's server\r\n\r\n" + file_contents.encode() + b"\r\n\r\n")
         logging.warning(str(addr[0]) + ' - - ' + time.strftime("%m/%d/%Y:%H:%M:%S") + ' - '  + splitSentence[0] + ' - 400 -')
         connectionSocket.close()
 
